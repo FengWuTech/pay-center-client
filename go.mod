@@ -1,4 +1,4 @@
-module github.com/GmTech/pay-center-client
+module github.com/FengWuTech/pay-center-client
 
 go 1.13
 
