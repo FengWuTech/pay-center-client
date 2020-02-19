@@ -3,7 +3,7 @@ package pay_center_client
 import (
 	"encoding/json"
 	"errors"
-	"github.com/GmTech/pay-center-client/util"
+	"github.com/FengWuTech/pay-center-client/util"
 	"github.com/parnurzeal/gorequest"
 	"io/ioutil"
 	"net/http"
