@@ -3,8 +3,8 @@ package pay_center_client
 import (
 	"encoding/json"
 	"errors"
-	"github.com/FengWuTech/pay-center-client/util"
-	"github.com/parnurzeal/gorequest"
+	"github.com/FengWuTech/pay-center-client/util/httputil"
+	"github.com/FengWuTech/pay-center-client/util/signutil"
 	"io/ioutil"
 	"net/http"
 )
@@ -30,31 +30,28 @@ func NewPayClient(appID string, apiKey string) *PayClient {
 // 充值
 func (client *PayClient) RechargeGoPay(request RechargeGoPayRequest) *RechargeGoPayResponse {
 	var sendBody, _ = json.Marshal(request)
-	sign := util.NewSign(client.ApiKey)
+	sign := signutil.NewSign(client.ApiKey)
 	sign.AddQuery("appid", client.AppID)
 	sign.SetBody(string(sendBody))
 	url := sign.GenSignURL(URL_RECHARGE_GOPAY)
 
 	var response RechargeGoPayResponse
-	gorequest.New().Post(url).
-		AppendHeader("Content-Type", "application/json").
-		SendStruct(request).
-		EndStruct(&response)
+	_, respBody := httputil.PostRawJson(url, string(sendBody))
+	json.Unmarshal(respBody, &response)
 	return &response
 }
 
 // 账单支付
 func (client *PayClient) BillGoPay(request BillGoPayRequest) *BillGoPayResponse {
 	var sendBody, _ = json.Marshal(request)
-	sign := util.NewSign(client.ApiKey)
+	sign := signutil.NewSign(client.ApiKey)
+	sign.AddQuery("appid", client.AppID)
 	sign.SetBody(string(sendBody))
 	url := sign.GenSignURL(URL_RECHARGE_GOPAY)
 
 	var response BillGoPayResponse
-	gorequest.New().Post(url).
-		AppendHeader("Content-Type", "application/json").
-		SendStruct(request).
-		EndStruct(&response)
+	_, respBody := httputil.PostRawJson(url, string(sendBody))
+	json.Unmarshal(respBody, &response)
 	return &response
 }
 
@@ -67,7 +64,7 @@ func (client *PayClient) PayNotify(httpReq *http.Request) (error, *NotifyRequest
 		return errors.New(err.Error()), nil
 	}
 
-	sign := util.NewSign(client.ApiKey)
+	sign := signutil.NewSign(client.ApiKey)
 	isMatch := sign.VerifySign(httpReq.RequestURI, string(reqBody))
 	if isMatch {
 		var notify NotifyRequest

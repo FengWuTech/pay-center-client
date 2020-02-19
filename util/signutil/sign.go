@@ -1,4 +1,4 @@
-package util
+package signutil
 
 import (
 	"crypto/md5"
@@ -65,8 +65,8 @@ func (sign *Sign) VerifySign(requestURI string, body string) bool {
 		if k == "sign" {
 			signStr = v[0]
 		} else {
+			sign.AddQuery(k, v[0])
 		}
-		sign.AddQuery(k, v[0])
 	}
 	sign.SetBody(body)
 	if signStr == sign.GenSign() {
