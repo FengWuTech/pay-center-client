@@ -44,9 +44,9 @@ func (client *PayClient) RechargeGoPay(request RechargeGoPayRequest) *RechargeGo
 }
 
 // 账单支付
-func (client *PayClient) BillGoPay(apiKey string, request BillGoPayRequest) *BillGoPayResponse {
+func (client *PayClient) BillGoPay(request BillGoPayRequest) *BillGoPayResponse {
 	var sendBody, _ = json.Marshal(request)
-	sign := util.NewSign(apiKey)
+	sign := util.NewSign(client.ApiKey)
 	sign.SetBody(string(sendBody))
 	url := sign.GenSignURL(URL_RECHARGE_GOPAY)
 
