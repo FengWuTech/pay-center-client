@@ -84,7 +84,6 @@ type CashRechargeResponse struct {
 }
 
 type CreateAccountRequest struct {
-	AppID     string `json:"appid" valid:"Required"`
 	CompanyID int    `json:"company_id" valid:"Required"`
 	UserID    int    `json:"user_id" valid:"Required"`
 	Type      int    `json:"type" valid:"Required"`

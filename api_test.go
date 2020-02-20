@@ -70,9 +70,8 @@ func TestCashRecharge(t *testing.T) {
 func TestAddAccount(t *testing.T) {
 	client := NewPayClient(APPID, APIKEY)
 	response := client.CreateAccount(CreateAccountRequest{
-		AppID:     "test",
 		CompanyID: 1,
-		UserID:    1,
+		UserID:    2,
 		Type:      0,
 		Name:      "通用账户",
 	})
