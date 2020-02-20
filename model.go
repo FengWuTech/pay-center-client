@@ -2,11 +2,25 @@ package pay_center_client
 
 import "time"
 
+type PayClient struct {
+	AppID  string
+	ApiKey string
+}
+
+// 实例化请求端
+func NewPayClient(appID string, apiKey string) *PayClient {
+	var client PayClient
+	client.AppID = appID
+	client.ApiKey = apiKey
+	return &client
+}
+
 type RechargeGoPayRequest struct {
 	WxSubAppID   string `json:"wx_sub_app_id"`
 	WxSubMchID   string `json:"wx_sub_mch_id"`
 	WxSubOpenID  string `json:"wx_sub_open_id"`
 	Title        string `json:"title"`
+	AccountID    int    `json:"account_id"`
 	Amount       int    `json:"amount"`
 	NotifyURL    string `json:"notify_url"`
 	NotifyAttach string `json:"notify_attach"`
@@ -72,6 +86,7 @@ type NotifyResponse struct {
 }
 
 type CashRechargeRequest struct {
+	AccountID    int `json:"account_id"`
 	Amount       int `json:"amount"`
 	UserID       int `json:"user_id"`
 	CompanyID    int `json:"company_id"`
@@ -126,4 +141,26 @@ type GetAccountResponse struct {
 		CreateTime      time.Time `json:"create_time"`
 		UpdateTime      time.Time `json:"update_time"`
 	} `json:"data"`
+}
+
+type RefundToAccountRequest struct {
+	AccountID int `json:"account_id"`
+	Amount    int `json:"amount"`
+}
+
+type RefundToAccountResponse struct {
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
+}
+
+type BillCashPayRequest struct {
+	Amount    int                     `json:"amount" valid:"Required"`
+	UserID    int                     `json:"user_id" valid:"Required"`
+	CompanyID int                     `json:"company_id" valid:"Required"`
+	BillList  []BillGoPayBillListItem `json:"bill_list" valid:"Required"`
+}
+
+type BillCashPayResponse struct {
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
 }
