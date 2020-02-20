@@ -22,7 +22,7 @@ func (client *PayClient) RechargeWeixinGoPay(request RechargeGoPayRequest) *Rech
 }
 
 // 现金充值
-func (client *PayClient) RechargeCashPay(request CashRechargeRequest) *CashRechargeResponse {
+func (client *PayClient) RechargeCashPay(request RechargeCashPayRequest) *RechargeCashPayResponse {
 	var sendBody, _ = json.Marshal(request)
 
 	sign := signutil.NewSign(client.ApiKey)
@@ -30,7 +30,7 @@ func (client *PayClient) RechargeCashPay(request CashRechargeRequest) *CashRecha
 	sign.SetBody(string(sendBody))
 	url := sign.GenSignURL(URL_RECHARGE_CASH_PAY)
 
-	var response CashRechargeResponse
+	var response RechargeCashPayResponse
 	_, respBody := httputil.PostRawJson(url, string(sendBody))
 	json.Unmarshal(respBody, &response)
 	return &response

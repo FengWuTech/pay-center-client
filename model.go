@@ -85,7 +85,7 @@ type NotifyResponse struct {
 	Msg  string `json:"msg"`
 }
 
-type CashRechargeRequest struct {
+type RechargeCashPayRequest struct {
 	AccountID    int `json:"account_id"`
 	Amount       int `json:"amount"`
 	UserID       int `json:"user_id"`
@@ -93,7 +93,7 @@ type CashRechargeRequest struct {
 	DeductAmount int `json:"deduct_amount"`
 }
 
-type CashRechargeResponse struct {
+type RechargeCashPayResponse struct {
 	Code int    `json:"code"`
 	Msg  string `json:"msg"`
 }

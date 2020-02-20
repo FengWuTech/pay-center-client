@@ -7,7 +7,7 @@ import (
 
 func TestRechargeCashPay(t *testing.T) {
 	client := NewPayClient(APPID, APIKEY)
-	response := client.RechargeCashPay(CashRechargeRequest{
+	response := client.RechargeCashPay(RechargeCashPayRequest{
 		AccountID:    1,
 		Amount:       1,
 		UserID:       17,
