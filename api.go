@@ -11,7 +11,7 @@ import (
 
 const (
 	URL_RECHARGE_GOPAY = "http://pms-api.gmtech.top/pay-center/minip-user/recharge/gopay"
-	RUL_BILL_GOPAY     = "http://pms-api.gmtech.top/pay-center/minip-user/billpay/gopay"
+	URL_BILL_GOPAY     = "http://pms-api.gmtech.top/pay-center/minip-user/billpay/gopay"
 )
 
 type PayClient struct {
@@ -47,7 +47,7 @@ func (client *PayClient) BillGoPay(request BillGoPayRequest) *BillGoPayResponse 
 	sign := signutil.NewSign(client.ApiKey)
 	sign.AddQuery("appid", client.AppID)
 	sign.SetBody(string(sendBody))
-	url := sign.GenSignURL(URL_RECHARGE_GOPAY)
+	url := sign.GenSignURL(URL_BILL_GOPAY)
 
 	var response BillGoPayResponse
 	_, respBody := httputil.PostRawJson(url, string(sendBody))
