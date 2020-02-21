@@ -43,24 +43,24 @@ type RechargeGoPayResponse struct {
 	} `json:"data"`
 }
 
-type BillGoPayBillListItem struct {
+type PayBillItem struct {
 	ID        int `json:"id"`
 	PayAmount int `json:"pay_amount"`
 }
 
 type BillGoPayRequest struct {
-	WxSubAppID   string                  `json:"wx_sub_app_id"`
-	WxSubMchID   string                  `json:"wx_sub_mch_id"`
-	WxSubOpenID  string                  `json:"wx_sub_open_id"`
-	Title        string                  `json:"title"`
-	Amount       int                     `json:"amount"`
-	NotifyURL    string                  `json:"notify_url"`
-	NotifyAttach string                  `json:"notify_attach"`
-	UserID       int                     `json:"user_id"`
-	UserIP       string                  `json:"user_ip"`
-	CompanyID    int                     `json:"company_id"`
-	DeductAmount int                     `json:"deduct_amount"`
-	BillList     []BillGoPayBillListItem `json:"bill_list"`
+	WxSubAppID   string        `json:"wx_sub_app_id"`
+	WxSubMchID   string        `json:"wx_sub_mch_id"`
+	WxSubOpenID  string        `json:"wx_sub_open_id"`
+	Title        string        `json:"title"`
+	Amount       int           `json:"amount"`
+	NotifyURL    string        `json:"notify_url"`
+	NotifyAttach string        `json:"notify_attach"`
+	UserID       int           `json:"user_id"`
+	UserIP       string        `json:"user_ip"`
+	CompanyID    int           `json:"company_id"`
+	DeductAmount int           `json:"deduct_amount"`
+	BillList     []PayBillItem `json:"bill_list"`
 }
 
 type BillGoPayResponse struct {
@@ -154,10 +154,10 @@ type RefundToAccountResponse struct {
 }
 
 type BillCashPayRequest struct {
-	Amount    int                     `json:"amount" valid:"Required"`
-	UserID    int                     `json:"user_id" valid:"Required"`
-	CompanyID int                     `json:"company_id" valid:"Required"`
-	BillList  []BillGoPayBillListItem `json:"bill_list" valid:"Required"`
+	Amount    int           `json:"amount" valid:"Required"`
+	UserID    int           `json:"user_id" valid:"Required"`
+	CompanyID int           `json:"company_id" valid:"Required"`
+	BillList  []PayBillItem `json:"bill_list" valid:"Required"`
 }
 
 type BillCashPayResponse struct {

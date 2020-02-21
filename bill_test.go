@@ -19,7 +19,7 @@ func TestPayClient_BillWeixinGoPay(t *testing.T) {
 		UserIP:       "127.0.0.2",
 		CompanyID:    1,
 		DeductAmount: 100,
-		BillList: []BillGoPayBillListItem{
+		BillList: []PayBillItem{
 			{
 				ID:        218,
 				PayAmount: 10,
@@ -40,7 +40,7 @@ func TestPayClient_BillCashPay(t *testing.T) {
 		Amount:    1,
 		UserID:    17,
 		CompanyID: 1,
-		BillList: []BillGoPayBillListItem{
+		BillList: []PayBillItem{
 			{
 				ID:        218,
 				PayAmount: 10,
