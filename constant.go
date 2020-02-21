@@ -8,7 +8,7 @@ const (
 
 	URL_RECHARGE_CASH_PAY     = "http://pms-api.gmtech.top/pay-center/minip-user/recharge/cash/pay"
 	URL_RECHARGE_WEIXIN_GOPAY = "http://pms-api.gmtech.top/pay-center/minip-user/recharge/weixin/gopay"
-	URL_BILL_CASH_GOPAY       = "http://pms-api.gmtech.top/pay-center/minip-user/bill/cash/gopay"
+	URL_BILL_CASH_PAY         = "http://pms-api.gmtech.top/pay-center/minip-user/bill/cash/pay"
 	URL_BILL_WEIXIN_GOPAY     = "http://pms-api.gmtech.top/pay-center/minip-user/bill/weixin/gopay"
 	URL_ACCOUNT_CREATE        = "http://pms-api.gmtech.top/pay-center/minip-user/account/add"
 	URL_ACCOUNT_UPDATE        = "http://pms-api.gmtech.top/pay-center/minip-user/account/update"
