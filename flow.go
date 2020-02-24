@@ -6,16 +6,16 @@ import (
 	"github.com/FengWuTech/pay-center-client/util/signutil"
 )
 
-func (client *PayClient) GetAccountFlow(userID int, page int, pageSize int) *GetAccountFlowResponse {
+func (client *PayClient) GetAccountFlow(request GetAccountFlowRequest) *GetAccountFlowResponse {
+	var sendBody, _ = json.Marshal(request)
+
 	sign := signutil.NewSign(client.ApiKey)
 	sign.AddQuery("appid", client.AppID)
-	sign.AddQuery("user_id", userID)
-	sign.AddQuery("page", page)
-	sign.AddQuery("page_size", pageSize)
+	sign.SetBody(string(sendBody))
 	url := sign.GenSignURL(URL_ACCOUNT_FLOW_LIST)
 
 	var response GetAccountFlowResponse
-	_, respBody := httputil.Get(url)
+	_, respBody := httputil.PostRawJson(url, string(sendBody))
 	json.Unmarshal(respBody, &response)
 	return &response
 }

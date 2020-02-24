@@ -186,6 +186,14 @@ type BillDeductAutoResponse struct {
 	Msg  string `json:"msg"`
 }
 
+type GetAccountFlowRequest struct {
+	FlowType    int   `json:"flow_type"`
+	AccountType int   `json:"account_type"`
+	UserIDList  []int `json:"user_id"`
+	Page        int   `json:"page"`
+	PageSize    int   `json:"page_size"`
+}
+
 type GetAccountFlowResponse struct {
 	Code int    `json:"code"`
 	Msg  string `json:"msg"`
