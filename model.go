@@ -209,5 +209,9 @@ type GetAccountFlowResponse struct {
 			DeductBillID *int    `json:"deduct_bill_id"` // 扣款账单ID
 			AccountName  *string `json:"account_name"`   // 账户名称
 		}
+		TotalIncome int `json:"total_income"`
+		TotalOutlay int `json:"total_outlay"`
+		PageIncome  int `json:"page_income"`
+		PageOutlay  int `json:"page_outlay"`
 	} `json:"data"`
 }
