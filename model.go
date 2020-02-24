@@ -86,11 +86,13 @@ type NotifyResponse struct {
 }
 
 type RechargeCashPayRequest struct {
-	AccountID    int `json:"account_id"`
-	Amount       int `json:"amount"`
-	UserID       int `json:"user_id"`
-	CompanyID    int `json:"company_id"`
-	DeductAmount int `json:"deduct_amount"`
+	AccountID      int    `json:"account_id"`
+	Amount         int    `json:"amount"`
+	UserID         int    `json:"user_id"`
+	CompanyID      int    `json:"company_id"`
+	DeductAmount   int    `json:"deduct_amount"`
+	CashPayChannel int    `json:"cash_pay_channel"`
+	Remark         string `json:"remark"`
 }
 
 type RechargeCashPayResponse struct {
