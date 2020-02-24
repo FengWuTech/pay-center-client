@@ -164,10 +164,12 @@ type RefundToUserResponse struct {
 }
 
 type BillCashPayRequest struct {
-	Amount    int           `json:"amount"`
-	UserID    int           `json:"user_id"`
-	CompanyID int           `json:"company_id"`
-	BillList  []PayBillItem `json:"bill_list"`
+	Amount         int           `json:"amount"`
+	UserID         int           `json:"user_id"`
+	CompanyID      int           `json:"company_id"`
+	BillList       []PayBillItem `json:"bill_list"`
+	CashPayChannel int           `json:"cash_pay_channel"`
+	Remark         string        `json:"remark"`
 }
 
 type BillCashPayResponse struct {
