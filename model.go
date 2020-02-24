@@ -201,18 +201,27 @@ type GetAccountFlowResponse struct {
 	Data struct {
 		Total int `json:"total"`
 		List  []struct {
-			AccountId    *int    `json:"account_id"`     // 资金账户ID
-			FlowType     *int    `json:"flow_type"`      // 变动类型：1.用户充值 2.物业公司退费 3.自动划扣
-			AmountBefore *int    `json:"amount_before"`  // 变动前资金账户金额
-			AmountChange *int    `json:"amount_change"`  // 变动金额
-			AmountAfter  *int    `json:"amount_after"`   // 变动后金额
-			PayFlowId    *int    `json:"pay_flow_id"`    // 支付流水ID
-			DeductBillID *int    `json:"deduct_bill_id"` // 扣款账单ID
-			AccountName  *string `json:"account_name"`   // 账户名称
+			AccountId     *int       `json:"account_id"`     // 资金账户ID
+			FlowType      *int       `json:"flow_type"`      // 变动类型：1.用户充值 2.物业公司退费 3.自动划扣
+			AmountBefore  *int       `json:"amount_before"`  // 变动前资金账户金额
+			AmountChange  *int       `json:"amount_change"`  // 变动金额
+			AmountAfter   *int       `json:"amount_after"`   // 变动后金额
+			PayFlowId     *int       `json:"pay_flow_id"`    // 支付流水ID
+			DeductBillID  *int       `json:"deduct_bill_id"` // 扣款账单ID
+			AccountName   *string    `json:"account_name"`   // 账户名称
+			CreateTime    *time.Time `json:"create_time"`
+			UpdateTime    *time.Time `json:"update_time"`
+			PayRealAmount *int       `json:"pay_real_amount"`
 		}
-		TotalIncome int `json:"total_income"`
-		TotalOutlay int `json:"total_outlay"`
-		PageIncome  int `json:"page_income"`
-		PageOutlay  int `json:"page_outlay"`
+		StatisticsAll struct {
+			ShouldFee int `json:"should_fee"`
+			RealFee   int `json:"real_fee"`
+			Expend    int `json:"expend"`
+		} `json:"statistics_all"`
+		StatisticsPage struct {
+			ShouldFee int `json:"should_fee"`
+			RealFee   int `json:"real_fee"`
+			Expend    int `json:"expend"`
+		} `json:"statistics_page"`
 	} `json:"data"`
 }
