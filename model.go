@@ -201,19 +201,21 @@ type GetAccountFlowResponse struct {
 	Data struct {
 		Total int `json:"total"`
 		List  []struct {
-			AccountId     *int       `json:"account_id"`     // 资金账户ID
-			FlowType      *int       `json:"flow_type"`      // 变动类型：1.用户充值 2.物业公司退费 3.自动划扣
-			AmountBefore  *int       `json:"amount_before"`  // 变动前资金账户金额
-			AmountChange  *int       `json:"amount_change"`  // 变动金额
-			AmountAfter   *int       `json:"amount_after"`   // 变动后金额
-			PayFlowId     *int       `json:"pay_flow_id"`    // 支付流水ID
-			DeductBillID  *int       `json:"deduct_bill_id"` // 扣款账单ID
-			CreateTime    *time.Time `json:"create_time"`
-			UpdateTime    *time.Time `json:"update_time"`
-			PayRealAmount *int       `json:"pay_real_amount"`
-			AccountName   *string    `json:"account_name"`
-			AccountType   *int       `json:"account_type"`
-			UserID        *int       `json:"user_id"`
+			AccountId      *int       `json:"account_id"`     // 资金账户ID
+			FlowType       *int       `json:"flow_type"`      // 变动类型：1.用户充值 2.物业公司退费 3.自动划扣
+			AmountBefore   *int       `json:"amount_before"`  // 变动前资金账户金额
+			AmountChange   *int       `json:"amount_change"`  // 变动金额
+			AmountAfter    *int       `json:"amount_after"`   // 变动后金额
+			PayFlowId      *int       `json:"pay_flow_id"`    // 支付流水ID
+			DeductBillID   *int       `json:"deduct_bill_id"` // 扣款账单ID
+			CreateTime     *time.Time `json:"create_time"`
+			UpdateTime     *time.Time `json:"update_time"`
+			PayRealAmount  *int       `json:"pay_real_amount"`
+			AccountName    *string    `json:"account_name"`
+			AccountType    *int       `json:"account_type"`
+			UserID         *int       `json:"user_id"`
+			CashPayChannel *string    `json:"cash_pay_channel"`
+			Remark         *string    `json:"remark"`
 		}
 		StatisticsAll struct {
 			ShouldFee int `json:"should_fee"`
