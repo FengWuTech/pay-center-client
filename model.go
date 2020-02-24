@@ -187,6 +187,7 @@ type BillDeductAutoResponse struct {
 }
 
 type GetAccountFlowRequest struct {
+	CompanyID   int   `json:"company_id"`
 	FlowType    int   `json:"flow_type"`
 	AccountType int   `json:"account_type"`
 	UserIDList  []int `json:"user_id"`
