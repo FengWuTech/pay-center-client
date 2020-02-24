@@ -153,14 +153,35 @@ type RefundToAccountResponse struct {
 	Msg  string `json:"msg"`
 }
 
+type RefundToUserRequest struct {
+	AccountID int `json:"account_id"`
+	Amount    int `json:"amount"`
+}
+
+type RefundToUserResponse struct {
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
+}
+
 type BillCashPayRequest struct {
-	Amount    int           `json:"amount" valid:"Required"`
-	UserID    int           `json:"user_id" valid:"Required"`
-	CompanyID int           `json:"company_id" valid:"Required"`
-	BillList  []PayBillItem `json:"bill_list" valid:"Required"`
+	Amount    int           `json:"amount"`
+	UserID    int           `json:"user_id"`
+	CompanyID int           `json:"company_id"`
+	BillList  []PayBillItem `json:"bill_list"`
 }
 
 type BillCashPayResponse struct {
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
+}
+
+type BillDeductAutoRequest struct {
+	AccountID int `json:"account_id"`
+	BillID    int `json:"bill_id"`
+	Amount    int `json:"amount"`
+}
+
+type BillDeductAutoResponse struct {
 	Code int    `json:"code"`
 	Msg  string `json:"msg"`
 }
