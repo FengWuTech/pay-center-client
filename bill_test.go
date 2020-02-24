@@ -5,6 +5,16 @@ import (
 	"testing"
 )
 
+func TestPayClient_BillDeductAuto(t *testing.T) {
+	client := NewPayClient(APPID, APIKEY)
+	response := client.BillDeductAuto(BillDeductAutoRequest{
+		AccountID: 1,
+		BillID:    1,
+		Amount:    10,
+	})
+	fmt.Printf("%v", response)
+}
+
 func TestPayClient_BillWeixinGoPay(t *testing.T) {
 	client := NewPayClient(APPID, APIKEY)
 	var request = BillGoPayRequest{
