@@ -208,10 +208,12 @@ type GetAccountFlowResponse struct {
 			AmountAfter   *int       `json:"amount_after"`   // 变动后金额
 			PayFlowId     *int       `json:"pay_flow_id"`    // 支付流水ID
 			DeductBillID  *int       `json:"deduct_bill_id"` // 扣款账单ID
-			AccountName   *string    `json:"account_name"`   // 账户名称
 			CreateTime    *time.Time `json:"create_time"`
 			UpdateTime    *time.Time `json:"update_time"`
 			PayRealAmount *int       `json:"pay_real_amount"`
+			AccountName   *string    `json:"account_name"`
+			AccountType   *int       `json:"account_type"`
+			UserID        *int       `json:"user_id"`
 		}
 		StatisticsAll struct {
 			ShouldFee int `json:"should_fee"`
