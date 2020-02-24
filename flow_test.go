@@ -11,7 +11,7 @@ func TestPayClient_GetAccountFlow(t *testing.T) {
 		CompanyID:   1,
 		FlowType:    1,
 		AccountType: 0,
-		UserIDList:  nil,
+		UserID:      17,
 		Page:        1,
 		PageSize:    10,
 	})
