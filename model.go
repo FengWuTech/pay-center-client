@@ -185,3 +185,21 @@ type BillDeductAutoResponse struct {
 	Code int    `json:"code"`
 	Msg  string `json:"msg"`
 }
+
+type GetAccountFlowResponse struct {
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
+	Data struct {
+		Total int `json:"total"`
+		List  []struct {
+			AccountId    *int    `json:"account_id"`     // 资金账户ID
+			FlowType     *int    `json:"flow_type"`      // 变动类型：1.用户充值 2.物业公司退费 3.自动划扣
+			AmountBefore *int    `json:"amount_before"`  // 变动前资金账户金额
+			AmountChange *int    `json:"amount_change"`  // 变动金额
+			AmountAfter  *int    `json:"amount_after"`   // 变动后金额
+			PayFlowId    *int    `json:"pay_flow_id"`    // 支付流水ID
+			DeductBillID *int    `json:"deduct_bill_id"` // 扣款账单ID
+			AccountName  *string `json:"account_name"`   // 账户名称
+		}
+	} `json:"data"`
+}
