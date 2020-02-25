@@ -146,9 +146,7 @@ type GetAccountResponse struct {
 }
 
 type RefundToAccountRequest struct {
-	AccountID int `json:"account_id"`
-	Amount    int `json:"amount"`
-	BillID    int `json:"bill_id"`
+	BillID int `json:"bill_id"`
 }
 
 type RefundToAccountResponse struct {

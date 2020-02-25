@@ -8,8 +8,7 @@ import (
 func TestPayClient_RefundToAccount(t *testing.T) {
 	client := NewPayClient(APPID, APIKEY)
 	var request = RefundToAccountRequest{
-		AccountID: 1,
-		Amount:    1,
+		BillID: 1,
 	}
 	response := client.RefundToAccount(request)
 	fmt.Printf("%v", response)
