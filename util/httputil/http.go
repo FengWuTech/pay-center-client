@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strings"
+	"time"
 )
 
 func Get(url string) (error, []byte) {
@@ -14,8 +15,10 @@ func Get(url string) (error, []byte) {
 		return err, nil
 	}
 
+	var start = time.Now().UnixNano()
 	resBody, _ := ioutil.ReadAll(resp.Body)
-	logutil.InfoF("url[%v] res[%v]", url, string(resBody))
+	var end = time.Now().UnixNano()
+	logutil.InfoF("%d url[%v] res[%v]", end-start, url, string(resBody))
 	return nil, resBody
 }
 
@@ -26,7 +29,9 @@ func PostRawJson(url string, body string) (error, []byte) {
 		return err, nil
 	}
 
+	var start = time.Now().UnixNano()
 	resBody, err := ioutil.ReadAll(resp.Body)
-	logutil.InfoF("url[%v] body[%v] res[%v] error[%v]", url, body, string(resBody), err)
+	var end = time.Now().UnixNano()
+	logutil.InfoF("%d url[%v] body[%v] res[%v] error[%v]", end-start, url, body, string(resBody), err)
 	return nil, resBody
 }
