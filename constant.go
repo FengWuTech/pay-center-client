@@ -14,9 +14,10 @@ const (
 	URL_ACCOUNT_CREATE        = "http://pms-api.gmtech.top/pay-center/account/add"
 	URL_ACCOUNT_UPDATE        = "http://pms-api.gmtech.top/pay-center/account/update"
 	URL_ACCOUNT_GET           = "http://pms-api.gmtech.top/pay-center/account/get"
-	URL_ACCOUNT_FLOW_LIST     = "http://127.0.0.1:8128/pay-center/account/flow/list"
+	URL_ACCOUNT_FLOW_LIST     = "http://pms-api.gmtech.top/pay-center/account/flow/list"
 	URL_REFUND_TO_ACCOUNT     = "http://pms-api.gmtech.top/pay-center/refund/to/account"
 	URL_REFUND_TO_USER        = "http://pms-api.gmtech.top/pay-center/refund/to/user"
+	URL_STATISTICS_RECHARGE   = "http://127.0.0.1:8128/pay-center/statistics/recharge"
 
 	APPID  = "test"
 	APIKEY = "testtesttesttesttesttesttesttest"

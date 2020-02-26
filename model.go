@@ -15,6 +15,12 @@ func NewPayClient(appID string, apiKey string) *PayClient {
 	return &client
 }
 
+type Response struct {
+	Code int         `json:"code"`
+	Msg  string      `json:"msg"`
+	Data interface{} `json:"data"`
+}
+
 type RechargeGoPayRequest struct {
 	WxSubAppID   string `json:"wx_sub_app_id"`
 	WxSubMchID   string `json:"wx_sub_mch_id"`

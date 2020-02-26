@@ -1,0 +1,22 @@
+package pay_center_client
+
+import (
+	"encoding/json"
+	"github.com/FengWuTech/pay-center-client/util/httputil"
+	"github.com/FengWuTech/pay-center-client/util/signutil"
+)
+
+func (client *PayClient) GetPrepayStatistics(companyID int, year int, month int) *Response {
+	sign := signutil.NewSign(client.ApiKey)
+	sign.AddQuery("appid", client.AppID)
+	sign.AddQuery("company_id", companyID)
+	sign.AddQuery("year", year)
+	sign.AddQuery("month", month)
+	url := sign.GenSignURL(URL_STATISTICS_RECHARGE)
+
+	_, res := httputil.Get(url)
+
+	var response Response
+	json.Unmarshal(res, &response)
+	return &response
+}
