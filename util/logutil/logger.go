@@ -8,7 +8,8 @@ import (
 func prependTime(args []interface{}) []interface{} {
 	nowTime := time.Now().Format("2006-01-02 15:04:05")
 	param := make([]interface{}, 0)
-	param = append(param, nowTime, args)
+	param = append(param, nowTime)
+	param = append(param, args...)
 	return param
 }
 
