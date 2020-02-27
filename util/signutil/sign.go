@@ -6,6 +6,7 @@ import (
 	"net/url"
 	"sort"
 	"strings"
+	"time"
 )
 
 type Sign struct {
@@ -31,6 +32,7 @@ func (sign *Sign) SetBody(body string) {
 }
 
 func (sign *Sign) GenSign() string {
+	sign.AddQuery("nonce", time.Now().UnixNano())
 	var keys []string
 	for k := range sign.KV {
 		keys = append(keys, k)
