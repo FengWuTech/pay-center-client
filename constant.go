@@ -1,6 +1,8 @@
 package pay_center_client
 
 const (
+	HOST = "http://127.0.0.1:8128"
+
 	URL_RECHARGE_CASH_PAY         = "/pay-center/recharge/cash/pay"
 	URL_RECHARGE_WEIXIN_GOPAY     = "/pay-center/recharge/weixin/gopay"
 	URL_BILL_DEDUCT_AUTO          = "/pay-center/bill/deduct/auto"
