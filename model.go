@@ -23,6 +23,16 @@ type Response struct {
 	Data interface{} `json:"data"`
 }
 
+type PayBillItem struct {
+	ID        int `json:"id"`
+	PayAmount int `json:"pay_amount"`
+}
+
+type PayChannelItem struct {
+	PayChannelID int `json:"pay_channel_id"`
+	Amount       int `json:"amount"`
+}
+
 type RechargeGoPayRequest struct {
 	WxSubAppID   string `json:"wx_sub_app_id"`
 	WxSubMchID   string `json:"wx_sub_mch_id"`
@@ -49,11 +59,6 @@ type RechargeGoPayResponse struct {
 		SignType  string `json:"signType"`
 		Sign      string `json:"sign"`
 	} `json:"data"`
-}
-
-type PayBillItem struct {
-	ID        int `json:"id"`
-	PayAmount int `json:"pay_amount"`
 }
 
 type BillGoPayRequest struct {
@@ -94,13 +99,13 @@ type NotifyResponse struct {
 }
 
 type RechargeCashPayRequest struct {
-	AccountID      int    `json:"account_id"`
-	Amount         int    `json:"amount"`
-	UserID         int    `json:"user_id"`
-	CompanyID      int    `json:"company_id"`
-	DeductAmount   int    `json:"deduct_amount"`
-	CashPayChannel int    `json:"cash_pay_channel"`
-	Remark         string `json:"remark"`
+	AccountID    int    `json:"account_id"`
+	Amount       int    `json:"amount"`
+	UserID       int    `json:"user_id"`
+	CompanyID    int    `json:"company_id"`
+	DeductAmount int    `json:"deduct_amount"`
+	PayChannel   int    `json:"pay_channel"`
+	Remark       string `json:"remark"`
 }
 
 type RechargeCashPayResponse struct {
@@ -173,17 +178,17 @@ type RefundToUserResponse struct {
 }
 
 type BillCashPayRequest struct {
-	Amount         int           `json:"amount"`
-	UserID         int           `json:"user_id"`
-	CompanyID      int           `json:"company_id"`
-	BillList       []PayBillItem `json:"bill_list"`
-	CashPayChannel int           `json:"cash_pay_channel"`
-	Remark         string        `json:"remark"`
+	UserID     int              `json:"user_id"`
+	CompanyID  int              `json:"company_id" valid:"Required"`
+	Remark     string           `json:"remark"`
+	PayChannel []PayChannelItem `json:"pay_channel_list"`
+	BillList   []PayBillItem    `json:"bill_list" valid:"Required"`
 }
 
 type BillCashPayResponse struct {
-	Code int    `json:"code"`
-	Msg  string `json:"msg"`
+	Code int         `json:"code"`
+	Msg  string      `json:"msg"`
+	Data interface{} `json:"data"`
 }
 
 type BillDeductAutoRequest struct {
@@ -212,22 +217,21 @@ type GetAccountFlowResponse struct {
 	Data struct {
 		Total int `json:"total"`
 		List  []struct {
-			ID             *int       `json:"id"`            // 充值列表ID
-			AccountId      *int       `json:"account_id"`    // 资金账户ID
-			FlowType       *int       `json:"flow_type"`     // 变动类型：1.用户充值 2.物业公司退费 3.自动划扣
-			AmountBefore   *int       `json:"amount_before"` // 变动前资金账户金额
-			AmountChange   *int       `json:"amount_change"` // 变动金额
-			AmountAfter    *int       `json:"amount_after"`  // 变动后金额
-			PayFlowId      *int       `json:"pay_flow_id"`   // 支付流水ID
-			BillID         *int       `json:"bill_id"`       // 扣款账单ID
-			CreateTime     *time.Time `json:"create_time"`
-			UpdateTime     *time.Time `json:"update_time"`
-			PayRealAmount  *int       `json:"pay_real_amount"`
-			AccountName    *string    `json:"account_name"`
-			AccountType    *int       `json:"account_type"`
-			UserID         *int       `json:"user_id"`
-			CashPayChannel *string    `json:"cash_pay_channel"`
-			Remark         *string    `json:"remark"`
+			ID            *int       `json:"id"`            // 充值列表ID
+			AccountId     *int       `json:"account_id"`    // 资金账户ID
+			FlowType      *int       `json:"flow_type"`     // 变动类型：1.用户充值 2.物业公司退费 3.自动划扣
+			AmountBefore  *int       `json:"amount_before"` // 变动前资金账户金额
+			AmountChange  *int       `json:"amount_change"` // 变动金额
+			AmountAfter   *int       `json:"amount_after"`  // 变动后金额
+			PayFlowId     *int       `json:"pay_flow_id"`   // 支付流水ID
+			BillID        *int       `json:"bill_id"`       // 扣款账单ID
+			CreateTime    *time.Time `json:"create_time"`
+			UpdateTime    *time.Time `json:"update_time"`
+			PayRealAmount *int       `json:"pay_real_amount"`
+			AccountName   *string    `json:"account_name"`
+			AccountType   *int       `json:"account_type"`
+			UserID        *int       `json:"user_id"`
+			Remark        *string    `json:"remark"`
 		}
 		StatisticsAll struct {
 			ShouldFee int `json:"should_fee"`

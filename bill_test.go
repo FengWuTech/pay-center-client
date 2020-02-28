@@ -44,17 +44,31 @@ func TestPayClient_BillWeixinGoPay(t *testing.T) {
 
 func TestPayClient_BillCashPay(t *testing.T) {
 	var request = BillCashPayRequest{
-		Amount:    1,
-		UserID:    17,
+		UserID:    1,
 		CompanyID: 1,
-		BillList: []PayBillItem{
+		Remark:    "sdk测试",
+		PayChannel: []PayChannelItem{
 			{
-				ID:        218,
-				PayAmount: 10,
+				PayChannelID: 1,
+				Amount:       1,
 			},
 			{
-				ID:        219,
-				PayAmount: 10,
+				PayChannelID: 2,
+				Amount:       1,
+			},
+			{
+				PayChannelID: 3,
+				Amount:       1,
+			},
+		},
+		BillList: []PayBillItem{
+			{
+				ID:        1,
+				PayAmount: 1,
+			},
+			{
+				ID:        2,
+				PayAmount: 1,
 			},
 		},
 	}
