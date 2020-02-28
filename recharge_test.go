@@ -6,8 +6,7 @@ import (
 )
 
 func TestRechargeCashPay(t *testing.T) {
-	client := NewPayClient(APPID, APIKEY)
-	response := client.RechargeCashPay(RechargeCashPayRequest{
+	response := NewClient().RechargeCashPay(RechargeCashPayRequest{
 		AccountID:    1,
 		Amount:       1,
 		UserID:       17,
@@ -18,7 +17,6 @@ func TestRechargeCashPay(t *testing.T) {
 }
 
 func TestRechargeGoPay(t *testing.T) {
-	client := NewPayClient(APPID, APIKEY)
 	var request = RechargeGoPayRequest{
 		AccountID:    1,
 		WxSubAppID:   "wxfa424fd01a813cce",
@@ -33,6 +31,6 @@ func TestRechargeGoPay(t *testing.T) {
 		CompanyID:    1,
 		DeductAmount: 100,
 	}
-	response := client.RechargeWeixinGoPay(request)
+	response := NewClient().RechargeWeixinGoPay(request)
 	fmt.Printf("%v", response)
 }

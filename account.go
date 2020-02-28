@@ -12,7 +12,7 @@ func (client *PayClient) CreateAccount(request CreateAccountRequest) *CreateAcco
 	sign := signutil.NewSign(client.ApiKey)
 	sign.AddQuery("appid", client.AppID)
 	sign.SetBody(string(sendBody))
-	url := sign.GenSignURL(URL_ACCOUNT_CREATE)
+	url := sign.GenSignURL(client.Host + URL_ACCOUNT_CREATE)
 
 	var response CreateAccountResponse
 	_, respBody := httputil.PostRawJson(url, string(sendBody))
@@ -26,7 +26,7 @@ func (client *PayClient) EditAccount(request EditAccountRequest) *EditAccountRes
 	sign := signutil.NewSign(client.ApiKey)
 	sign.AddQuery("appid", client.AppID)
 	sign.SetBody(string(sendBody))
-	url := sign.GenSignURL(URL_ACCOUNT_UPDATE)
+	url := sign.GenSignURL(client.Host + URL_ACCOUNT_UPDATE)
 
 	var response EditAccountResponse
 	_, respBody := httputil.PostRawJson(url, string(sendBody))
@@ -39,7 +39,7 @@ func (client *PayClient) GetAccount(id int) *GetAccountResponse {
 	sign := signutil.NewSign(client.ApiKey)
 	sign.AddQuery("appid", client.AppID)
 	sign.AddQuery("id", id)
-	url := sign.GenSignURL(URL_ACCOUNT_GET)
+	url := sign.GenSignURL(client.Host + URL_ACCOUNT_GET)
 
 	var response GetAccountResponse
 	_, respBody := httputil.Get(url)

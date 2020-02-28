@@ -12,7 +12,7 @@ func (client *PayClient) RefundToAccount(request RefundToAccountRequest) *Refund
 	sign := signutil.NewSign(client.ApiKey)
 	sign.AddQuery("appid", client.AppID)
 	sign.SetBody(string(sendBody))
-	url := sign.GenSignURL(URL_REFUND_TO_ACCOUNT)
+	url := sign.GenSignURL(client.Host + URL_REFUND_TO_ACCOUNT)
 
 	var response RefundToAccountResponse
 	_, respBody := httputil.PostRawJson(url, string(sendBody))
@@ -26,7 +26,7 @@ func (client *PayClient) RefundToUser(request RefundToUserRequest) *RefundToUser
 	sign := signutil.NewSign(client.ApiKey)
 	sign.AddQuery("appid", client.AppID)
 	sign.SetBody(string(sendBody))
-	url := sign.GenSignURL(URL_REFUND_TO_USER)
+	url := sign.GenSignURL(client.Host + URL_REFUND_TO_USER)
 
 	var response RefundToUserResponse
 	_, respBody := httputil.PostRawJson(url, string(sendBody))

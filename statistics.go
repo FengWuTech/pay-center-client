@@ -12,7 +12,7 @@ func (client *PayClient) GetDailyRechargeStatistics(companyID int, year int, mon
 	sign.AddQuery("company_id", companyID)
 	sign.AddQuery("year", year)
 	sign.AddQuery("month", month)
-	url := sign.GenSignURL(URL_STATISTICS_RECHARGE_DAILY)
+	url := sign.GenSignURL(client.Host + URL_STATISTICS_RECHARGE_DAILY)
 
 	_, res := httputil.Get(url)
 
@@ -26,7 +26,7 @@ func (client *PayClient) GetMonthRechargeStatistics(companyID int, year int) *Re
 	sign.AddQuery("appid", client.AppID)
 	sign.AddQuery("company_id", companyID)
 	sign.AddQuery("year", year)
-	url := sign.GenSignURL(URL_STATISTICS_RECHARGE_MONTH)
+	url := sign.GenSignURL(client.Host + URL_STATISTICS_RECHARGE_MONTH)
 
 	_, res := httputil.Get(url)
 

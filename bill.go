@@ -12,7 +12,7 @@ func (client *PayClient) BillDeductAuto(request BillDeductAutoRequest) *BillDedu
 	sign := signutil.NewSign(client.ApiKey)
 	sign.AddQuery("appid", client.AppID)
 	sign.SetBody(string(sendBody))
-	url := sign.GenSignURL(URL_BILL_DEDUCT_AUTO)
+	url := sign.GenSignURL(client.Host + URL_BILL_DEDUCT_AUTO)
 
 	var response BillDeductAutoResponse
 	_, respBody := httputil.PostRawJson(url, string(sendBody))
@@ -27,7 +27,7 @@ func (client *PayClient) BillWeixinGoPay(request BillGoPayRequest) *BillGoPayRes
 	sign := signutil.NewSign(client.ApiKey)
 	sign.AddQuery("appid", client.AppID)
 	sign.SetBody(string(sendBody))
-	url := sign.GenSignURL(URL_BILL_WEIXIN_GOPAY)
+	url := sign.GenSignURL(client.Host + URL_BILL_WEIXIN_GOPAY)
 
 	var response BillGoPayResponse
 	_, respBody := httputil.PostRawJson(url, string(sendBody))
@@ -41,7 +41,7 @@ func (client *PayClient) BillCashPay(request BillCashPayRequest) *BillCashPayRes
 	sign := signutil.NewSign(client.ApiKey)
 	sign.AddQuery("appid", client.AppID)
 	sign.SetBody(string(sendBody))
-	url := sign.GenSignURL(URL_BILL_CASH_PAY)
+	url := sign.GenSignURL(client.Host + URL_BILL_CASH_PAY)
 
 	var response BillCashPayResponse
 	_, respBody := httputil.PostRawJson(url, string(sendBody))

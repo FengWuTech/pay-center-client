@@ -6,8 +6,7 @@ import (
 )
 
 func TestPayClient_GetAccountFlow(t *testing.T) {
-	client := NewPayClient(APPID, APIKEY)
-	response := client.GetAccountFlow(GetAccountFlowRequest{
+	response := NewClient().GetAccountFlow(GetAccountFlowRequest{
 		CompanyID:   1,
 		FlowType:    1,
 		AccountType: 0,

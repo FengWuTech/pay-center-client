@@ -6,8 +6,7 @@ import (
 )
 
 func TestAddAccount(t *testing.T) {
-	client := NewPayClient(APPID, APIKEY)
-	response := client.CreateAccount(CreateAccountRequest{
+	response := NewClient().CreateAccount(CreateAccountRequest{
 		CompanyID: 1,
 		UserID:    2,
 		Type:      0,
@@ -17,8 +16,7 @@ func TestAddAccount(t *testing.T) {
 }
 
 func TestEditAccount(t *testing.T) {
-	client := NewPayClient(APPID, APIKEY)
-	response := client.EditAccount(EditAccountRequest{
+	response := NewClient().EditAccount(EditAccountRequest{
 		ID:     4,
 		Name:   "通用资金账户",
 		Status: 0,
@@ -27,7 +25,6 @@ func TestEditAccount(t *testing.T) {
 }
 
 func TestGetAccount(t *testing.T) {
-	client := NewPayClient(APPID, APIKEY)
-	response := client.GetAccount(4)
+	response := NewClient().GetAccount(4)
 	fmt.Printf("%v", response)
 }

@@ -12,7 +12,7 @@ func (client *PayClient) GetAccountFlow(request GetAccountFlowRequest) *GetAccou
 	sign := signutil.NewSign(client.ApiKey)
 	sign.AddQuery("appid", client.AppID)
 	sign.SetBody(string(sendBody))
-	url := sign.GenSignURL(URL_ACCOUNT_FLOW_LIST)
+	url := sign.GenSignURL(client.Host + URL_ACCOUNT_FLOW_LIST)
 
 	var response GetAccountFlowResponse
 	_, respBody := httputil.PostRawJson(url, string(sendBody))

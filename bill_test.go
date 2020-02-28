@@ -6,8 +6,7 @@ import (
 )
 
 func TestPayClient_BillDeductAuto(t *testing.T) {
-	client := NewPayClient(APPID, APIKEY)
-	response := client.BillDeductAuto(BillDeductAutoRequest{
+	response := NewClient().BillDeductAuto(BillDeductAutoRequest{
 		AccountID: 1,
 		BillID:    1,
 		Amount:    10,
@@ -16,7 +15,6 @@ func TestPayClient_BillDeductAuto(t *testing.T) {
 }
 
 func TestPayClient_BillWeixinGoPay(t *testing.T) {
-	client := NewPayClient(APPID, APIKEY)
 	var request = BillGoPayRequest{
 		WxSubAppID:   "wxfa424fd01a813cce",
 		WxSubMchID:   "1575841741",
@@ -40,12 +38,11 @@ func TestPayClient_BillWeixinGoPay(t *testing.T) {
 			},
 		},
 	}
-	response := client.BillWeixinGoPay(request)
+	response := NewClient().BillWeixinGoPay(request)
 	fmt.Printf("%v", response)
 }
 
 func TestPayClient_BillCashPay(t *testing.T) {
-	client := NewPayClient(APPID, APIKEY)
 	var request = BillCashPayRequest{
 		Amount:    1,
 		UserID:    17,
@@ -61,6 +58,6 @@ func TestPayClient_BillCashPay(t *testing.T) {
 			},
 		},
 	}
-	response := client.BillCashPay(request)
+	response := NewClient().BillCashPay(request)
 	fmt.Printf("%v", response)
 }

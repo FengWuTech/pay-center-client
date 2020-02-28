@@ -13,7 +13,7 @@ func (client *PayClient) RechargeWeixinGoPay(request RechargeGoPayRequest) *Rech
 	sign := signutil.NewSign(client.ApiKey)
 	sign.AddQuery("appid", client.AppID)
 	sign.SetBody(string(sendBody))
-	url := sign.GenSignURL(URL_RECHARGE_WEIXIN_GOPAY)
+	url := sign.GenSignURL(client.Host + URL_RECHARGE_WEIXIN_GOPAY)
 
 	var response RechargeGoPayResponse
 	_, respBody := httputil.PostRawJson(url, string(sendBody))
@@ -28,7 +28,7 @@ func (client *PayClient) RechargeCashPay(request RechargeCashPayRequest) *Rechar
 	sign := signutil.NewSign(client.ApiKey)
 	sign.AddQuery("appid", client.AppID)
 	sign.SetBody(string(sendBody))
-	url := sign.GenSignURL(URL_RECHARGE_CASH_PAY)
+	url := sign.GenSignURL(client.Host + URL_RECHARGE_CASH_PAY)
 
 	var response RechargeCashPayResponse
 	_, respBody := httputil.PostRawJson(url, string(sendBody))

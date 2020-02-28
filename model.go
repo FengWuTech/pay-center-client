@@ -3,15 +3,17 @@ package pay_center_client
 import "time"
 
 type PayClient struct {
+	Host   string
 	AppID  string
 	ApiKey string
 }
 
 // 实例化请求端
-func NewPayClient(appID string, apiKey string) *PayClient {
+func NewPayClient(appID string, apiKey string, host string) *PayClient {
 	var client PayClient
 	client.AppID = appID
 	client.ApiKey = apiKey
+	client.Host = host
 	return &client
 }
 
