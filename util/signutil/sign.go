@@ -32,7 +32,6 @@ func (sign *Sign) SetBody(body string) {
 }
 
 func (sign *Sign) GenSign() string {
-	sign.AddQuery("nonce", time.Now().UnixNano())
 	var keys []string
 	for k := range sign.KV {
 		keys = append(keys, k)
@@ -51,8 +50,10 @@ func (sign *Sign) GenSign() string {
 }
 
 func (sign *Sign) GenSignURL(host string) string {
+	sign.AddQuery("nonce", time.Now().UnixNano())
 	signStr := sign.GenSign()
 	query := make([]string, 0)
+	query = append(query)
 	for k, v := range sign.KV {
 		query = append(query, k+"="+v)
 	}
