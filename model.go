@@ -125,6 +125,7 @@ type RechargeHistoryResponse struct {
 			PayAmount    int       `json:"pay_amount"`
 			DeductAmount int       `json:"deduct_amount"`
 			PayTime      time.Time `json:"pay_time"`
+			AccountName  string    `json:"account_name"`
 		} `json:"list"`
 	}
 }
