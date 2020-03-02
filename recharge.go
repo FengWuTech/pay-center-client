@@ -35,3 +35,18 @@ func (client *PayClient) RechargeCashPay(request RechargeCashPayRequest) *Rechar
 	json.Unmarshal(respBody, &response)
 	return &response
 }
+
+// 充值历史
+func (client *PayClient) RechargeHistory(userID int, page int, pageSize int) *RechargeHistoryResponse {
+	sign := signutil.NewSign(client.ApiKey)
+	sign.AddQuery("appid", client.AppID)
+	sign.AddQuery("user_id", userID)
+	sign.AddQuery("page", page)
+	sign.AddQuery("page_size", pageSize)
+	url := sign.GenSignURL(client.Host + URL_RECHARGE_HISTORY)
+
+	var response RechargeHistoryResponse
+	_, respBody := httputil.Get(url)
+	json.Unmarshal(respBody, &response)
+	return &response
+}

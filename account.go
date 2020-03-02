@@ -46,3 +46,16 @@ func (client *PayClient) GetAccount(id int) *GetAccountResponse {
 	json.Unmarshal(respBody, &response)
 	return &response
 }
+
+func (client *PayClient) GetUserAccount(userID int) *GetUserAccountResponse {
+
+	sign := signutil.NewSign(client.ApiKey)
+	sign.AddQuery("appid", client.AppID)
+	sign.AddQuery("user_id", userID)
+	url := sign.GenSignURL(client.Host + URL_USER_ACCOUNT)
+
+	var response GetUserAccountResponse
+	_, respBody := httputil.Get(url)
+	json.Unmarshal(respBody, &response)
+	return &response
+}

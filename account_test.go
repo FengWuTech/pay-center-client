@@ -28,3 +28,8 @@ func TestGetAccount(t *testing.T) {
 	response := NewClient().GetAccount(4)
 	fmt.Printf("%v", response)
 }
+
+func TestPayClient_GetUserAccount(t *testing.T) {
+	response := NewClient().GetUserAccount(17)
+	fmt.Printf("%v", response)
+}

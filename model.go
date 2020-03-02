@@ -1,6 +1,8 @@
 package pay_center_client
 
-import "time"
+import (
+	"time"
+)
 
 type PayClient struct {
 	Host   string
@@ -113,6 +115,20 @@ type RechargeCashPayResponse struct {
 	Msg  string `json:"msg"`
 }
 
+type RechargeHistoryResponse struct {
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
+	Data struct {
+		Total int `json:"total"`
+		List  []struct {
+			ID           int       `json:"id"`
+			PayAmount    int       `json:"pay_amount"`
+			DeductAmount int       `json:"deduct_amount"`
+			PayTime      time.Time `json:"pay_time"`
+		} `json:"list"`
+	}
+}
+
 type CreateAccountRequest struct {
 	CompanyID int    `json:"company_id" valid:"Required"`
 	UserID    int    `json:"user_id" valid:"Required"`
@@ -137,6 +153,21 @@ type EditAccountRequest struct {
 type EditAccountResponse struct {
 	Code int    `json:"code"`
 	Msg  string `json:"msg"`
+}
+
+type GetUserAccountResponse struct {
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
+	Data []struct {
+		ID              int    `json:"id"`
+		UserId          int    `json:"user_id"`
+		Type            int    `json:"type"`
+		Name            string `json:"name"`
+		Status          int    `json:"status"`
+		AmountAll       int    `json:"amount_all"`
+		AmountAvailable int    `json:"amount_available"`
+		AmountBlocked   int    `json:"amount_blocked"`
+	} `json:"data"`
 }
 
 type GetAccountResponse struct {
