@@ -18,6 +18,8 @@ const (
 	URL_REFUND_TO_USER            = "/pay-center/refund/to/user"
 	URL_STATISTICS_RECHARGE_DAILY = "/pay-center/statistics/recharge/daily"
 	URL_STATISTICS_RECHARGE_MONTH = "/pay-center/statistics/recharge/month"
+	URL_STATISTICS_INCOME_DAILY   = "/pay-center/statistics/income/daily"
+	URL_STATISTICS_INCOME_MONTH   = "/pay-center/statistics/income/month"
 
 	APPID  = "test"
 	APIKEY = "testtesttesttesttesttesttesttest"
