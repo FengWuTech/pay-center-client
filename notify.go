@@ -3,7 +3,7 @@ package pay_center_client
 import (
 	"encoding/json"
 	"errors"
-	"gitlab.gmtech.top/golang/pay-center-client/util/signutil"
+	"github.com/FengWuTech/pay-center-client/util/signutil"
 	"io/ioutil"
 	"net/http"
 )

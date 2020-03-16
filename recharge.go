@@ -2,8 +2,8 @@ package pay_center_client
 
 import (
 	"encoding/json"
-	"gitlab.gmtech.top/golang/pay-center-client/util/httputil"
-	"gitlab.gmtech.top/golang/pay-center-client/util/signutil"
+	"github.com/FengWuTech/pay-center-client/util/httputil"
+	"github.com/FengWuTech/pay-center-client/util/signutil"
 )
 
 // 微信充值
