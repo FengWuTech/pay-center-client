@@ -47,6 +47,7 @@ type RechargeGoPayRequest struct {
 	UserID       int    `json:"user_id"`
 	UserIP       string `json:"user_ip"`
 	CompanyID    int    `json:"company_id"`
+	ProjectID    int    `json:"project_id"`
 	DeductAmount int    `json:"deduct_amount"`
 }
 
@@ -106,6 +107,7 @@ type RechargeCashPayRequest struct {
 	Amount       int    `json:"amount"`
 	UserID       int    `json:"user_id"`
 	CompanyID    int    `json:"company_id"`
+	ProjectID    int    `json:"project_id"`
 	DeductAmount int    `json:"deduct_amount"`
 	PayChannel   int    `json:"pay_channel"`
 	Remark       string `json:"remark"`
@@ -213,6 +215,7 @@ type RefundToUserResponse struct {
 type BillCashPayRequest struct {
 	UserID     int              `json:"user_id"`
 	CompanyID  int              `json:"company_id" valid:"Required"`
+	ProjectID  int              `json:"project_id" valid:"Required"`
 	Remark     string           `json:"remark"`
 	PayChannel []PayChannelItem `json:"pay_channel_list"`
 	BillList   []PayBillItem    `json:"bill_list" valid:"Required"`

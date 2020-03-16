@@ -47,11 +47,12 @@ func TestPayClient_BillCashPay(t *testing.T) {
 	var request = BillCashPayRequest{
 		UserID:    1,
 		CompanyID: 1,
+		ProjectID: 20,
 		Remark:    "sdk测试",
 		PayChannel: []PayChannelItem{
 			{
 				PayChannelID: 1,
-				Amount:       1,
+				Amount:       100000,
 			},
 			{
 				PayChannelID: 2,

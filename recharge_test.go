@@ -11,6 +11,7 @@ func TestPayClient_RechargeCashPay(t *testing.T) {
 		Amount:       1,
 		UserID:       17,
 		CompanyID:    1,
+		ProjectID:    20,
 		DeductAmount: 10,
 	})
 	fmt.Printf("%v", response)
@@ -29,6 +30,7 @@ func TestPayClient_RechargeWeixinGoPay(t *testing.T) {
 		UserID:       17,
 		UserIP:       "127.0.0.2",
 		CompanyID:    1,
+		ProjectID:    20,
 		DeductAmount: 100,
 	}
 	response := NewClient().RechargeWeixinGoPay(request)
