@@ -16,6 +16,8 @@ func TestPayClient_BillDeductAuto(t *testing.T) {
 
 func TestPayClient_BillWeixinGoPay(t *testing.T) {
 	var request = BillGoPayRequest{
+		CompanyID:    1,
+		ProjectID:    20,
 		WxSubAppID:   "wxfa424fd01a813cce",
 		WxSubMchID:   "1575841741",
 		WxSubOpenID:  "oVsiGv3nClXr_fGtoQ1I7lgYZgU0",
@@ -25,7 +27,6 @@ func TestPayClient_BillWeixinGoPay(t *testing.T) {
 		NotifyAttach: "{}",
 		UserID:       17,
 		UserIP:       "127.0.0.2",
-		CompanyID:    1,
 		DeductAmount: 100,
 		BillList: []PayBillItem{
 			{
