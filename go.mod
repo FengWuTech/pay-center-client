@@ -1,3 +1,3 @@
-module github.com/FengWuTech/pay-center-client
+module gitlab.gmtech.top/golang/pay-center-client
 
 go 1.13

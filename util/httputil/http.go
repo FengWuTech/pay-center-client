@@ -1,7 +1,7 @@
 package httputil
 
 import (
-	"github.com/FengWuTech/pay-center-client/util/logutil"
+	"gitlab.gmtech.top/golang/pay-center-client/util/logutil"
 	"io/ioutil"
 	"net/http"
 	"strings"
