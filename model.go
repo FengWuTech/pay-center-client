@@ -281,3 +281,28 @@ type GetAccountFlowResponse struct {
 		} `json:"statistics_page"`
 	} `json:"data"`
 }
+
+type GetPayFlowResponse struct {
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
+	Data struct {
+		ID           *int       `json:"id"`             // ID
+		AppID        *string    `json:"app_id"`         // 应用ID
+		BatchNo      *string    `json:"batch_no"`       // 批量号，用来标记支付批次
+		CompanyId    *int       `json:"company_id"`     // 公司ID
+		ProjectID    *int       `json:"project_id"`     // 项目ID
+		BizType      *int       `json:"biz_type"`       // 业务类型 1.预交费 2.账单支付 3.押金支付
+		LocalTradeNo *string    `json:"local_trade_no"` // 本地流水单号
+		ThirdTradeNo *string    `json:"third_trade_no"` // 三方交易单号
+		PayChannel   *int       `json:"pay_channel"`    // 支付渠道
+		PayAmount    *int       `json:"pay_amount"`     // 支付金额，单位分
+		PayTime      *time.Time `json:"pay_time"`       // 支付时间
+		PayStatus    *int       `json:"pay_status"`     // 支付状态 1.待支付 2已支付
+		UserId       *int       `json:"user_id"`        // 支付用户ID
+		DeductAmount *int       `json:"deduct_amount"`  // 抵扣金额
+		AccountID    *int       `json:"account_id"`     // 资金账户ID
+		Remark       *string    `json:"remark"`         // 备注
+		CreateTime   *time.Time `json:"create_time"`    // 创建时间
+		UpdateTime   *time.Time `json:"update_time"`    // 更新时间
+	}
+}
