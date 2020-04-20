@@ -238,6 +238,30 @@ type BillDeductAutoResponse struct {
 	Msg  string `json:"msg"`
 }
 
+type BillPayInfoResponse struct {
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
+	Data struct {
+		DeductList []struct {
+			BillID          int       `json:"bill_id"`
+			AccountID       int       `json:"account_id"`
+			AccountName     string    `json:"account_name"`
+			AmountBefore    int       `json:"amount_before"`
+			AmountAfter     int       `json:"amount_after"`
+			AmountChange    int       `json:"amount_change"`
+			AccountFlowType int       `json:"account_flow_type"`
+			CreateTime      time.Time `json:"create_time"`
+			UpdateTime      time.Time `json:"update_time"`
+		} `json:"deduct_list"`
+		PayList []struct {
+			PayShareID     int `json:"pay_share_id"`
+			PayShareAmount int `json:"pay_share_amount"`
+			PayFlowID      int `json:"pay_flow_id"`
+			PayChannel     int `json:"pay_channel"`
+		} `json:"pay_list"`
+	} `json:"data"`
+}
+
 type GetAccountFlowRequest struct {
 	CompanyID   int `json:"company_id"`
 	FlowType    int `json:"flow_type"`

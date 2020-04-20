@@ -77,3 +77,8 @@ func TestPayClient_BillCashPay(t *testing.T) {
 	response := NewClient().BillCashPay(request)
 	fmt.Printf("%v", response)
 }
+
+func TestPayClient_BillPayInfo(t *testing.T) {
+	res := NewClient().BillPayInfo(2904)
+	fmt.Printf("%v", res)
+}

@@ -9,6 +9,7 @@ const (
 	URL_BILL_DEDUCT_AUTO      = "/pay-center/bill/deduct/auto"
 	URL_BILL_CASH_PAY         = "/pay-center/bill/cash/pay"
 	URL_BILL_WEIXIN_GOPAY     = "/pay-center/bill/weixin/gopay"
+	URL_BILL_PAY_INFO         = "/pay-center/bill/pay/info"
 	URL_ACCOUNT_CREATE        = "/pay-center/account/add"
 	URL_ACCOUNT_UPDATE        = "/pay-center/account/update"
 	URL_ACCOUNT_GET           = "/pay-center/account/get"
