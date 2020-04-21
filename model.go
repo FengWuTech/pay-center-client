@@ -254,10 +254,11 @@ type BillPayInfoResponse struct {
 			UpdateTime      time.Time `json:"update_time"`
 		} `json:"deduct_list"`
 		PayList []struct {
-			PayShareID     int `json:"pay_share_id"`
-			PayShareAmount int `json:"pay_share_amount"`
-			PayFlowID      int `json:"pay_flow_id"`
-			PayChannel     int `json:"pay_channel"`
+			PayShareID     int       `json:"pay_share_id"`
+			PayShareAmount int       `json:"pay_share_amount"`
+			PayFlowID      int       `json:"pay_flow_id"`
+			PayChannel     int       `json:"pay_channel"`
+			PayTime        time.Time `json:"pay_time"`
 		} `json:"pay_list"`
 	} `json:"data"`
 }
