@@ -60,3 +60,15 @@ func (client *PayClient) BillPayInfo(billID int) *BillPayInfoResponse {
 	json.Unmarshal(respBody, &response)
 	return &response
 }
+
+func (client *PayClient) SyncBill(billID int) *BillPayInfoResponse {
+	sign := signutil.NewSign(client.ApiKey)
+	sign.AddQuery("appid", client.AppID)
+	sign.AddQuery("bill_id", billID)
+	url := sign.GenSignURL(client.Host + URL_BILL_SYNC)
+
+	var response BillPayInfoResponse
+	_, respBody := httputil.Get(url)
+	json.Unmarshal(respBody, &response)
+	return &response
+}
