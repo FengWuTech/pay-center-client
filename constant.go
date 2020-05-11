@@ -18,6 +18,7 @@ const (
 	URL_REFUND_TO_ACCOUNT     = "/pay-center/refund/to/account"
 	URL_REFUND_TO_USER        = "/pay-center/refund/to/user"
 	URL_PAY_FLOW_GET          = "/pay-center/pay/flow/get"
+	URL_CLEAN_COMPANY_DATA    = "/pay-center/clean/company/data"
 
 	APPID  = "test"
 	APIKEY = "testtesttesttesttesttesttesttest"
