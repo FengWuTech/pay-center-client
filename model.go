@@ -219,6 +219,7 @@ type BillCashPayRequest struct {
 	Remark     string           `json:"remark"`
 	PayChannel []PayChannelItem `json:"pay_channel_list"`
 	BillList   []PayBillItem    `json:"bill_list" valid:"Required"`
+	PayTime    time.Time        `json:"pay_time"`
 }
 
 type BillCashPayResponse struct {
