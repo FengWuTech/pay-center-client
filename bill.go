@@ -6,20 +6,6 @@ import (
 	"github.com/FengWuTech/pay-center-client/util/signutil"
 )
 
-func (client *PayClient) BillDeductAuto(request BillDeductAutoRequest) *BillDeductAutoResponse {
-	var sendBody, _ = json.Marshal(request)
-
-	sign := signutil.NewSign(client.ApiKey)
-	sign.AddQuery("appid", client.AppID)
-	sign.SetBody(string(sendBody))
-	url := sign.GenSignURL(client.Host + URL_BILL_DEDUCT_AUTO)
-
-	var response BillDeductAutoResponse
-	_, respBody := httputil.PostRawJson(url, string(sendBody))
-	json.Unmarshal(respBody, &response)
-	return &response
-}
-
 // 账单支付
 func (client *PayClient) BillWeixinGoPay(request BillGoPayRequest) *BillGoPayResponse {
 	var sendBody, _ = json.Marshal(request)
@@ -54,18 +40,6 @@ func (client *PayClient) BillPayInfo(billID int) *BillPayInfoResponse {
 	sign.AddQuery("appid", client.AppID)
 	sign.AddQuery("bill_id", billID)
 	url := sign.GenSignURL(client.Host + URL_BILL_PAY_INFO)
-
-	var response BillPayInfoResponse
-	_, respBody := httputil.Get(url)
-	json.Unmarshal(respBody, &response)
-	return &response
-}
-
-func (client *PayClient) SyncBill(billID int) *BillPayInfoResponse {
-	sign := signutil.NewSign(client.ApiKey)
-	sign.AddQuery("appid", client.AppID)
-	sign.AddQuery("bill_id", billID)
-	url := sign.GenSignURL(client.Host + URL_BILL_SYNC)
 
 	var response BillPayInfoResponse
 	_, respBody := httputil.Get(url)
