@@ -68,7 +68,6 @@ type BillGoPayRequest struct {
 	CompanyID    int           `json:"company_id"`
 	ProjectID    int           `json:"project_id"`
 	WxSubAppID   string        `json:"wx_sub_app_id"`
-	WxSubMchID   string        `json:"wx_sub_mch_id"`
 	WxSubOpenID  string        `json:"wx_sub_open_id"`
 	Title        string        `json:"title"`
 	Amount       int           `json:"amount"`
