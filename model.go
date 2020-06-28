@@ -67,6 +67,7 @@ type RechargeGoPayResponse struct {
 type BillGoPayRequest struct {
 	CompanyID    int           `json:"company_id"`
 	ProjectID    int           `json:"project_id"`
+	GroupID      int           `json:"group_id"`
 	WxSubAppID   string        `json:"wx_sub_app_id"`
 	WxSubOpenID  string        `json:"wx_sub_open_id"`
 	Title        string        `json:"title"`
@@ -215,6 +216,7 @@ type BillCashPayRequest struct {
 	UserID     int              `json:"user_id"`
 	CompanyID  int              `json:"company_id" valid:"Required"`
 	ProjectID  int              `json:"project_id" valid:"Required"`
+	GroupID    int              `json:"group_id" valid:"Required"`
 	Remark     string           `json:"remark"`
 	PayChannel []PayChannelItem `json:"pay_channel_list"`
 	BillList   []PayBillItem    `json:"bill_list" valid:"Required"`
