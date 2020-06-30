@@ -8,7 +8,7 @@ import (
 func TestPayClient_BillWeixinGoPay(t *testing.T) {
 	var request = BillGoPayRequest{
 		CompanyID:    1,
-		ProjectID:    20,
+		GroupID:      20,
 		WxSubAppID:   "wxfa424fd01a813cce",
 		WxSubOpenID:  "oVsiGv3nClXr_fGtoQ1I7lgYZgU0",
 		Title:        "测试",
@@ -37,7 +37,7 @@ func TestPayClient_BillCashPay(t *testing.T) {
 	var request = BillCashPayRequest{
 		UserID:    1,
 		CompanyID: 1,
-		ProjectID: 20,
+		GroupID:   20,
 		Remark:    "sdk测试",
 		PayChannel: []PayChannelItem{
 			{
